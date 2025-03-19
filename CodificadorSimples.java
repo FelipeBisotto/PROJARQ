@@ -1,6 +1,8 @@
 import java.time.LocalDate;
 
 public class CodificadorSimples implements Codificador {
+    private int securityLevel = ((int) Math.random() * 10 -1) + 10;
+
     public String getNome() {
         return "Codificador Simples";
     }
@@ -10,14 +12,14 @@ public class CodificadorSimples implements Codificador {
     }
 
     public int getNivelSeguranca(){
-        return 1;
+        return securityLevel;
     }
 
     public String codifica(String str) {
         StringBuilder encoded = new StringBuilder();
 
         for (char c : str.toCharArray()) {
-            encoded.append((char) (c + 1));
+            encoded.append((char) (c + securityLevel));
         }
 
         return encoded.toString();
@@ -27,7 +29,7 @@ public class CodificadorSimples implements Codificador {
         StringBuilder encoded = new StringBuilder();
         
         for (char c : str.toCharArray()) {
-            encoded.append((char) (c - 1));
+            encoded.append((char) (c - securityLevel));
         }
         
         return encoded.toString();
